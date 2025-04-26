@@ -1,4 +1,4 @@
-# Copper Engineerign Technical Assessment
+# Copper Engineering Technical Assessment
 
 This is my solution for an efficient and scalable system for time series data.
 
