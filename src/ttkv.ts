@@ -25,7 +25,7 @@ class TTKV {
 
     }
 
-    async get(key: string, timestamp?: number | Date): Promise<number|null> {
+    async get(key: string, timestamp?: number | Date): Promise<number | null> {
 
         let lteParameter = new Date()
 
@@ -41,8 +41,6 @@ class TTKV {
         const db = client.db('stocks')
         const collection = db.collection('stockquotes')
 
-
-
         const result = await collection.findOne({
             ticker: key,
             date: {
@@ -53,7 +51,7 @@ class TTKV {
         )
         await closeDBConnection(client)
 
-        if(result !== null) {
+        if (result !== null) {
             return result?.price
         }
 
@@ -73,13 +71,13 @@ class TTKV {
     async initCollection(): Promise<void> {
         const client = await connectClient()
         const db = client.db('stocks')
-        
+
         const collections = await db.listCollections().toArray()
         const stockQuotesCollection = collections.find((collection) => {
             collection.name === 'stockquotes' && collection.type === 'timeseries'
         })
 
-        if(!stockQuotesCollection) {
+        if (!stockQuotesCollection) {
 
             await db.createCollection(
                 "stockquotes",
@@ -102,8 +100,7 @@ class TTKV {
         const collection = db.collection('stockquotes')
 
         const data: any[] = []
-
-        const cursor = collection.find({}, {sort: {date:1}})
+        const cursor = collection.find({}, { sort: { date: 1 } })
 
         for await (const doc of cursor) {
             data.push(doc)
