@@ -1,6 +1,6 @@
 # Copper Engineering Technical Assessment
 
-This is my solution for an efficient and scalable system for storing and retrieving time series data.
+This is my solution for an efficient and scalable system for storing and retrieving time series data.  It utilizes [MongoDB's Time Series Collection](https://www.mongodb.com/docs/manual/core/timeseries-collections/) to optimize for effeciency.
 
 ## Requirements
 - docker
@@ -15,3 +15,7 @@ This is my solution for an efficient and scalable system for storing and retriev
 5. `npm install`
 6. `npx tsc run.ts`
 7. `node run.js`
+
+## Scaling
+
+For scaling this solution, refer to Mongo DB's documentation on [sharding time series collections](https://www.mongodb.com/docs/manual/core/timeseries/timeseries-shard-collection/)
