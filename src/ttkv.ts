@@ -59,6 +59,61 @@ class TTKV {
 
         return null
     }
+
+
+    // deletes the stockquotes collection
+    async deleteCollection(): Promise<void> {
+        const client = await connectClient()
+        const db = client.db('stocks')
+        await db.collection('stockquotes').drop()
+        await closeDBConnection(client)
+    }
+
+    // creates a timeseries collection called stockquotes if it doesn't exist
+    async initCollection(): Promise<void> {
+        const client = await connectClient()
+        const db = client.db('stocks')
+        
+        const collections = await db.listCollections().toArray()
+        const stockQuotesCollection = collections.find((collection) => {
+            collection.name === 'stockquotes' && collection.type === 'timeseries'
+        })
+
+        if(!stockQuotesCollection) {
+
+            await db.createCollection(
+                "stockquotes",
+                {
+                    timeseries: {
+                        timeField: "date",
+                        metaField: "ticker",
+                        granularity: "seconds"
+                    }
+                }
+            )
+        }
+
+        await closeDBConnection(client)
+    }
+
+    async getSortedData(): Promise<any[]> {
+        const client = await connectClient()
+        const db = client.db('stocks')
+        const collection = db.collection('stockquotes')
+
+        const data: any[] = []
+
+        const cursor = collection.find({}, {sort: {date:1}})
+
+        for await (const doc of cursor) {
+            data.push(doc)
+        }
+
+        await closeDBConnection(client)
+
+        return data
+
+    }
 }
 
 export default TTKV

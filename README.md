@@ -1,6 +1,6 @@
 # Copper Engineering Technical Assessment
 
-This is my solution for an efficient and scalable system for time series data.
+This is my solution for an efficient and scalable system for storing and retrieving time series data.
 
 ## Requirements
 - docker

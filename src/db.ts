@@ -6,7 +6,7 @@ const MONGO_HOSTNAME= 'localhost'
 const MONGO_PORT= 4001
 const MONGO_DB= 'stocks'
 
-const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}/${MONGO_DB}?authSource=admin`
 const client = new MongoClient(url)
 
 
@@ -21,6 +21,6 @@ export async function connectClient() {
   }
 }
 
-export async function closeDBConnection(client) {
+export async function closeDBConnection(client:MongoClient) {
   await client.close()
 }

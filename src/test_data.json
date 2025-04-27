@@ -1,0 +1,15 @@
+[
+    {"ticker": "AAPL", "price": 201.56, "sleep": 2000},
+    {"ticker": "AMZN", "price": 400.16, "sleep": 3000},
+    {"ticker": "AAPL", "price": 203.56, "sleep": 3000},
+    {"ticker": "TSLA", "price": 257.24, "sleep": 2000},
+    {"ticker": "KO", "price": 59.56, "sleep": 4000},
+    {"ticker": "AAPL", "price": 202.46, "sleep": 3000},
+    {"ticker": "TSLA", "price": 300.81, "sleep": 3000},
+    {"ticker": "AAPL", "price": 176.36, "sleep": 3000},
+    {"ticker": "AAPL", "price": 200.12, "sleep": 2000},
+    {"ticker": "KO", "price": 95.31, "sleep": 2000},
+    {"ticker": "AMZN", "price": 211.74, "sleep": 3000},
+    {"ticker": "TSLA", "price": 56.86, "sleep": 2000}
+
+]
